@@ -1,0 +1,183 @@
+// Priorização : Retorno de informações de endpoint 
+
+// GET /servidor/aplicacao/projeto/business/ambiente/endpoint-uri
+// Exemplo: GET http://servidor/aplicacao/SinistroOA.PagamentoSinistroServiceEBS/PagamentoBusinessService/OSB-TST2/endpoint-uri
+// Deve retornar : https://wastst2innovare.portoseguro.brasil/sinistroprocessoWS/PagamentoSinistroWebService_v1_0ImplService
+
+// GET /servidor/aplicacao/projeto/business/ambiente/read-timeout
+// Exemplo: GET http://servidor/aplicacao/SinistroOA.PagamentoSinistroServiceEBS/PagamentoBusinessService/OSB-TST2/read-timeout
+// Deve retornar : 5
+
+// GET /servidor/aplicacao/projeto/business/ambiente/connection-timeout
+// Exemplo: GET http://servidor/aplicacao/SinistroOA.PagamentoSinistroServiceEBS/PagamentoBusinessService/OSB-TST2/connection-timeout
+// Deve retornar : 1
+
+var Projectchema = new Schema({
+    projeto: String,
+    name: String,
+    description: String,
+    assets: [{
+        name: String,
+        type: String,
+        environments: [{
+            "name": String,
+            "endpoint-uri": String,
+            "read-timeout": Number,
+            "connection-timeout": Number,
+            "https": Boolean,
+            "authentication": String,
+            "service-account": String,
+            "work-manager": String,
+            "ldap-group": String,
+            "user": String,
+            "password": String,
+            "timestamp": Date.now
+        }],
+    }],
+    timestamp: Date.now,
+});
+
+
+
+[{ // Projeto do OSB
+    "name": "SinistroOA.PagamentoSinistroServiceEBS",
+    "assets": [{ // Asset / Componente
+            "name": "PagamentoBusinessService",
+            "type": "Business Service",
+            "environments": [{
+                    "name": "OSB-TST2",
+                    "endpoint-uri": "https://wastst2innovare.portoseguro.brasil/sinistroprocessoWS/PagamentoSinistroWebService_v1_0ImplService",
+                    "read-timeout": 5,
+                    "connection-timeout": 1,
+                    "authentication": "basic",
+                    "service-account": "MyServiceAccount",
+                    "work-manager": "SBDefaultResponseWorkManager",
+                    "timestamp": 1459361875337
+                },
+                {
+                    "name": "OSB-HML2",
+                    "endpoint-uri": "https://washml2innovare.portoseguro.brasil/sinistroprocessoWS/PagamentoSinistroWebService_v1_0ImplService",
+                    "read-timeout": 30,
+                    "connection-timeout": 10,
+                    "authentication": "basic",
+                    "service-account": "MyServiceAccount",
+                    "work-manager": "SBDefaultResponseWorkManager",
+                    "timestamp": 1459361875337
+                }
+            ],
+            "timestamp": 1459361875337
+        },
+        {
+            "name": "PagamentoSinistroServiceEBSV1_0",
+            "type": "Proxy Service",
+            "protocol": "http",
+            "service-type": "SOAP",
+            "uri": "/SinistroOA.PagamentoSinistroServiceEBS/PagamentoSinistroServiceEBSV1_0",
+            "environments": [{
+
+                    "https": true,
+                    "authentication": "basic",
+                    "work-manager": "default",
+                    "ldap-group": "RE.Innovare.SinistroOA.PagamentoSinistroServiceEBS",
+                    "timestamp": 1459361875337
+                },
+                {
+                    "name": "OSB-HML2",
+                    "https": true,
+                    "authentication": "basic",
+                    "work-manager": "default",
+                    "ldap-group": "RE.Innovare.SinistroOA.PagamentoSinistroServiceEBS",
+                    "timestamp": 1459361875337
+                }
+            ],
+            "timestamp": 1459361875337
+        },
+        {
+            "name": "SinistroServiceAccount",
+            "type": "Service Account",
+            "environments": [{
+                    "name": "OSB-TST2",
+                    "user": "myuser",
+                    "password": "mypassword",
+                    "timestamp": 1459361875337
+                },
+                {
+                    "name": "OSB-HML2",
+                    "user": "myuser2",
+                    "password": "mypassword2",
+                    "timestamp": 1459361875337
+                }
+            ],
+            "timestamp": 1459361875337
+        }
+    ]
+}]
+
+
+{
+    "SinistroOA.PagamentoSinistroServiceEBS": { // Projeto do OSB
+        "PagamentoBusinessService": { // Asset / Componente
+            "type": "Business Service",
+            "environments": {
+                "OSB-TST2": {
+                    "endpoint-uri": "https://wastst2innovare.portoseguro.brasil/sinistroprocessoWS/PagamentoSinistroWebService_v1_0ImplService",
+                    "read-timeout": 5,
+                    "connection-timeout": 1,
+                    "authentication": "basic",
+                    "service-account": "MyServiceAccount",
+                    "wormanager": "SBDefaultResponseWorkManager",
+                    "timestamp": 1459361875337
+                },
+                "OSB-HML2": {
+                    "endpoint-uri": "https://washml2innovare.portoseguro.brasil/sinistroprocessoWS/PagamentoSinistroWebService_v1_0ImplService",
+                    "read-timeout": 30,
+                    "connection-timeout": 10,
+                    "authentication": "basic",
+                    "service-account": "MyServiceAccount",
+                    "wormanager": "SBDefaultResponseWorkManager",
+                    "timestamp": 1459361875337
+                }
+            },
+            "timestamp": 1459361875337
+        },
+        "PagamentoSinistroServiceEBSV1_0": {
+            "type": "Proxy Service",
+            "protocol": "http",
+            "service-type": "SOAP",
+            "uri": "/SinistroOA.PagamentoSinistroServiceEBS/PagamentoSinistroServiceEBSV1_0",
+            "environments": {
+                "OSB-TST2": {
+                    "https": true,
+                    "authentication": "basic",
+                    "workmanager": "default",
+                    "ldap-group": "RE.Innovare.SinistroOA.PagamentoSinistroServiceEBS",
+                    "timestamp": 1459361875337
+                },
+                "OSB-HML2": {
+                    "https": true,
+                    "authentication": "basic",
+                    "workmanager": "default",
+                    "ldap-group": "RE.Innovare.SinistroOA.PagamentoSinistroServiceEBS",
+                    "timestamp": 1459361875337
+                }
+            },
+            "timestamp": 1459361875337
+        },
+        "SinistroServiceAccount": {
+            "type": "Service Account",
+            "environments": {
+                "OSB-TST2": {
+                    "user": "myuser",
+                    "password": "mypassword",
+                    "timestamp": 1459361875337
+                },
+                "OSB-HML2": {
+                    "user": "myuser2",
+                    "password": "mypassword2",
+                    "timestamp": 1459361875337
+                }
+            },
+            "timestamp": 1459361875337
+        }
+    }
+}

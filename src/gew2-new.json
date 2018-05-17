@@ -1,0 +1,32 @@
+{
+    "name": "AdicionarInfComplementaresPJIntegrarionService",
+    "technology": "OSB Project",
+    "environments": [
+        {
+            "name": "OSB-HML2",
+            "assets": [
+                {
+                    "name": "AdicionarInfComplementaresPJServiceSoapV1_0",
+                    "type": "BusinessService",
+                    "protocol": "",
+                    "service-type": "",
+                    "uri": "",
+                    "endpoint-uri": "http://li123/app/v1/pj",
+                    "read-timeout": "",
+                    "connection-timeout": "",
+                    "authentication": "None",
+                    "service-account": "",
+                    "workmanager": "",
+                    "https": "",
+                    "grupoLdap": "",
+                    "user": "",
+                    "password": "",
+                    "resultCachingSupport":"",
+                    "cacheTokenExpression":"",
+                    "cacheExpirationTime":"",
+                    "timestamp": "1506448830180"
+                }
+            ]
+        }
+    ]
+}
