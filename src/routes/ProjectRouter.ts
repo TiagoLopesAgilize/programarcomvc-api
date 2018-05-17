@@ -533,7 +533,7 @@ export class ProjectRouter {
 const projectRouter = new ProjectRouter();
 projectRouter.init();
 
-export default projectRouter.router;
+export default this.projectRouter.router;
 // GET /servidor/aplicacao/projeto/business/ambiente/endpoint-uri
 // Exemplo: GET http://servidor/aplicacao/SinistroOA.PagamentoSinistroServiceEBS/PagamentoBusinessService/OSB-TST2/endpoint-uri
 // Deve retornar : https://wastst2innovare.portoseguro.brasil/sinistroprocessoWS/PagamentoSinistroWebService_v1_0ImplService

@@ -414,4 +414,4 @@ export class AlunosRouter {
 const alunosRouter = new AlunosRouter();
 alunosRouter.init();
 
-export default alunosRouter.router;
+export default this.alunosRouter.router;

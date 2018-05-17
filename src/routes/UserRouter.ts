@@ -78,4 +78,4 @@ export class UserRouter {
 const userRouter = new UserRouter();
 userRouter.init();
 
-export default userRouter.router;
+export default this.userRouter.router;

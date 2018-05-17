@@ -52,4 +52,4 @@ export class StoreRouter {
 const storeRouter = new StoreRouter();
 storeRouter.init();
 
-export default storeRouter.router;
+export default this.storeRouter.router;
