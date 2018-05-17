@@ -10,7 +10,6 @@ import { sign, verify, TokenExpiredError } from 'jsonwebtoken';
 import { compareSync, genSaltSync, genSalt, hashSync, compare, hash } from 'bcrypt-nodejs';
 
 import { User } from '../models/user';
-import CompanyController from './CompanyController';
 
 var Project = require('../models/projects');
 

@@ -6,12 +6,7 @@ import * as  cors from 'cors';
 
 import ProjectRouter from './routes/ProjectRouter';
 import UserRouter from './routes/UserRouter';
-import CompanyRouter from './routes/CompanyRouter';
 import StoreRouter from './routes/StoreRouter';
-import SectionRouter from './routes/SectionRouter';
-import FechamentoRouter from './routes/FechamentoRouter';
-import ProductRouter from './routes/ProductRouter';
-
 import AlunosRouter from './routes/AlunosRouter';
 
 import * as passportLocal from "passport-local";
@@ -72,12 +67,8 @@ class App {
     this.express.use('/api/v1/soa', ProjectRouter);
     this.express.use('/users', UserRouter);
     this.express.use('/lojas', StoreRouter);
-    this.express.use('/fechamento', FechamentoRouter);
-    this.express.use('/company', CompanyRouter);
-    this.express.use('/section', SectionRouter);
     this.express.use('/aluno', AlunosRouter);
-    this.express.use('/product', ProductRouter);
-  }
+    }
 
 }
 
